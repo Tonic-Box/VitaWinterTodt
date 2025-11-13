@@ -7,6 +7,8 @@ import com.tonic.api.widgets.BankAPI;
 import com.tonic.api.widgets.InventoryAPI;
 import com.tonic.api.widgets.WidgetAPI;
 import com.tonic.data.ItemEx;
+import com.tonic.services.ClickManager;
+import com.tonic.util.ClickManagerUtil;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.gameval.InterfaceID;
@@ -87,6 +89,7 @@ public class WinterAPI
             ItemEx pot = InventoryAPI.getItem("Rejuvenation");
             if(pot != null)
             {
+                ClickManagerUtil.queueClickBox(pot);
                 InventoryAPI.interact(pot, 2);
                 return true;
             }

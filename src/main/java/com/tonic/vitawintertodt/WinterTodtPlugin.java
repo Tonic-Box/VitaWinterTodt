@@ -97,7 +97,7 @@ public class WinterTodtPlugin extends Plugin
         }
 
         // Stay ALIVE
-        if(WinterAPI.handleWarmth() || state == null)
+        if(state == null || WinterAPI.handleWarmth())
         {
             return;
         }
