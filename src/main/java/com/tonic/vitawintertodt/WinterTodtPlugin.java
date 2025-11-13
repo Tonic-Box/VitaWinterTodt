@@ -96,16 +96,16 @@ public class WinterTodtPlugin extends Plugin
             newRound(State.START);
         }
 
-        // Transition to prep when round ends
-        if(WinterAPI.getTimer() != 0 && state == State.GAME)
-        {
-            newRound(State.PREP);
-        }
-
         // Stay ALIVE
         if(WinterAPI.handleWarmth() || state == null)
         {
             return;
+        }
+
+        // Transition to prep when round ends
+        if(WinterAPI.getTimer() != 0 && state == State.GAME)
+        {
+            newRound(State.PREP);
         }
 
         // Execute current state and transition if needed
