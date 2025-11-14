@@ -7,9 +7,10 @@ import com.tonic.api.game.SkillAPI;
 import com.tonic.api.handlers.BankBuilder;
 import com.tonic.api.widgets.BankAPI;
 import com.tonic.api.widgets.InventoryAPI;
-import com.tonic.data.ItemEx;
 import com.tonic.data.LayoutView;
-import com.tonic.data.TileObjectEx;
+import com.tonic.data.wrappers.ItemEx;
+import com.tonic.data.wrappers.PlayerEx;
+import com.tonic.data.wrappers.TileObjectEx;
 import com.tonic.services.GameManager;
 import com.tonic.util.ClickManagerUtil;
 import com.tonic.util.handler.AbstractHandlerBuilder;
@@ -172,7 +173,7 @@ public class WinterTodtBuilder extends AbstractHandlerBuilder<WinterTodtBuilder>
             if(InventoryAPI.count(ItemID.WINT_BRUMA_ROOT) >= 10)
                 return true;
 
-            if(PlayerAPI.isIdle())
+            if(PlayerEx.getLocal().isIdle())
             {
                 TileObjectEx tree = TileObjectAPI.search()
                         .withName("Bruma roots")
@@ -200,7 +201,7 @@ public class WinterTodtBuilder extends AbstractHandlerBuilder<WinterTodtBuilder>
                 return true;
             }
 
-            if(!MovementAPI.isMoving() && !PlayerAPI.getLocal().getWorldLocation().equals(position.getBrazier()))
+            if(!MovementAPI.isMoving() && !PlayerEx.getLocal().getWorldPoint().equals(position.getBrazier()))
                 MovementAPI.walkToWorldPoint(position.getBrazier());
 
             int lastFxp = context.get("fxp");
@@ -311,7 +312,7 @@ public class WinterTodtBuilder extends AbstractHandlerBuilder<WinterTodtBuilder>
         });
         addDelayUntil(() -> InventoryAPI.count(ItemID.WINT_HERB) >= 5);
         addDelayUntil("end", () -> {
-            boolean atBrazier = PlayerAPI.getLocal().getWorldLocation().equals(position.getBrazier());
+            boolean atBrazier = PlayerEx.getLocal().getWorldPoint().equals(position.getBrazier());
 
             if (!atBrazier && !MovementAPI.isMoving())
                 MovementAPI.walkToWorldPoint(position.getBrazier());

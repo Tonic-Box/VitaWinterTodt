@@ -1,8 +1,7 @@
 package com.tonic.vitawintertodt.data;
 
 import com.tonic.api.entities.TileObjectAPI;
-import com.tonic.data.TileObjectEx;
-import com.tonic.services.ClickManager;
+import com.tonic.data.wrappers.TileObjectEx;
 import com.tonic.util.ClickManagerUtil;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

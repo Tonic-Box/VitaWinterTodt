@@ -6,8 +6,7 @@ import com.tonic.api.game.VarAPI;
 import com.tonic.api.widgets.BankAPI;
 import com.tonic.api.widgets.InventoryAPI;
 import com.tonic.api.widgets.WidgetAPI;
-import com.tonic.data.ItemEx;
-import com.tonic.services.ClickManager;
+import com.tonic.data.wrappers.ItemEx;
 import com.tonic.util.ClickManagerUtil;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
@@ -90,7 +89,7 @@ public class WinterAPI
             if(pot != null)
             {
                 ClickManagerUtil.queueClickBox(pot);
-                InventoryAPI.interact(pot, 2);
+                pot.interact(2);
                 return true;
             }
         }
